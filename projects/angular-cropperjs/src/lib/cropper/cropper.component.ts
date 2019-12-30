@@ -58,6 +58,22 @@ export class CropperComponent implements OnInit {
         this.imageElement = image;
 
         //
+        // Setup canvas element
+        const canvas = document.getElementById('canvas') as HTMLCanvasElement;
+
+        const width = image.offsetWidth;
+        const height = image.offsetHeight;
+
+        canvas.width = width;
+        canvas.height = height;
+        canvas.getContext('2d').drawImage(
+            image,
+            0, 0, image.naturalWidth, image.naturalHeight,
+            0, 0, width, height
+        );
+
+
+        //
         // Add crossOrigin?
         if (this.cropperOptions.checkCrossOrigin) image.crossOrigin = 'anonymous';
 
@@ -104,7 +120,7 @@ export class CropperComponent implements OnInit {
 
         //
         // Set cropperjs
-        this.cropper = new Cropper(image, this.cropperOptions);
+        this.cropper = new Cropper(canvas, this.cropperOptions);
     }
 
     /**

@@ -11,6 +11,7 @@
 
     <!-- CROPPER -->
     <div class="cropper">
-        <img #image alt="image" [src]="imageUrl" (load)="imageLoaded($event)" (error)="imageLoadError($event)" />
+        <img #image alt="image" style="display:none;" [src]="imageUrl" (load)="imageLoaded($event)" (error)="imageLoadError($event)" />
+        <canvas id="canvas"></canvas>
     </div>
 </div>
